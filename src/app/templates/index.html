@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload PDF{% endblock %}
+
+{% block heading %}Upload PDF{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('upload.upload') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" multiple>
+    <input type="submit" value="Upload">
+</form>
+
+{% if error_messages %}
+<div class="error-messages">
+    <ul>
+        {% for message in error_messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
+
+{% if filename %}
+<p>Uploaded File: {{ filename }}</p>
+<a href="/view/{{ filename }}">View PDF</a>
+{% endif %}
+{% endblock %}

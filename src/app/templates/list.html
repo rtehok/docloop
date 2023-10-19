@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}List PDFs{% endblock %}
+
+{% block heading %}List PDFs{% endblock %}
+
+{% block content %}
+<h2>List of uploaded PDFs</h2>
+<ul>
+  {% for file in files %}
+  <li><a href="/view/{{ file }}">{{ file }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

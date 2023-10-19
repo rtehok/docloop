@@ -1,0 +1,5 @@
+*.pyc
+src/uploads/
+uploads/
+src/images/
+images/

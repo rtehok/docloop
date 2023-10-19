@@ -1,0 +1,5 @@
+Flask
+werkzeug
+PyPDF2
+gunicorn
+pdf2image

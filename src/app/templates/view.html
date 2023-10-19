@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}PDF Viewer{% endblock %}
+
+{% block heading %}PDF Viewer{% endblock %}
+
+{% block content %}
+<h2>PDF Viewer</h2>
+<button id="toggleText" class="collapsible">Toggle Text Version</button>
+<button id="toggleImage" class="collapsible">Toggle Image Version</button>
+<button id="toggleIframe" class="collapsible">Toggle IFrame Version</button>
+<div class="content">
+    <div id="textVersion" style="display: none;">
+        <pre>{{ pdf_text }}</pre>
+    </div>
+    <div class="iframe-container" id="iframeVersion" style="display: none;">
+        <iframe src="{{ url_for('upload.uploaded_file', filename=filename) }}" width="80%" height="500"></iframe>
+    </div>
+    <div id="imageVersion" style="display: none;">
+        {% for image_name in images %}
+        <img src="{{ url_for('view.uploaded_image', image_name=image_name) }}" width="80%" style="margin: 0 auto;">
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    var toggleText = document.getElementById("toggleText");
+    var toggleImage = document.getElementById("toggleImage");
+    var toggleIframe = document.getElementById("toggleIframe");
+    var textVersion = document.getElementById("textVersion");
+    var imageVersion = document.getElementById("imageVersion");
+    var iframeVersion = document.getElementById("iframeVersion");
+
+    toggleText.addEventListener("click", function () {
+        this.classList.toggle("active");
+        textVersion.style.display = "block";
+        imageVersion.style.display = "none";
+        iframeVersion.style.display = "none";
+    });
+
+    toggleImage.addEventListener("click", function () {
+        this.classList.toggle("active");
+        textVersion.style.display = "none";
+        imageVersion.style.display = "block";
+        iframeVersion.style.display = "none";
+    });
+
+    toggleIframe.addEventListener("click", function () {
+        this.classList.toggle("active");
+        textVersion.style.display = "none";
+        imageVersion.style.display = "none";
+        iframeVersion.style.display = "block";
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}PDF Viewer{% endblock %}</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="/">Upload PDF</a></li>
+    <li><a href="/list">List PDFs</a></li>
+  </ul>
+</nav>
+
+<h1>{% block heading %}PDF Viewer{% endblock %}</h1>
+
+<div class="content">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
