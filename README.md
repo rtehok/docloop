@@ -30,7 +30,7 @@ Before running the application, you need to have the following installed:
       python -m venv venv
       source venv/bin/activate
       pip install -r requirements.txt
-      python src/app.py
+      python src/run.py
 
 The app will be available at http://localhost:5000.
 
